@@ -22,7 +22,15 @@ class Pessoa:
       self.nome = input('Nome: ')
       self.email = input('Email: ')
       self.senha = getpass.getpass ('Senha: ') #senha oculta
-      self.tel=input('Telefone: ')
+
+      while True:
+        try:
+          self.tel=int(input('Telefone: '))
+          break
+        except ValueError:
+          print("inválido")
+
+
       self.cpf=input('cpf:')
       self.endereco = input('Endereço: ') 
 
