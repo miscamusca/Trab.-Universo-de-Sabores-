@@ -18,18 +18,32 @@ class Pessoa:
 
   def cadastro(self):
     if menu1 == '1':
+      while True: # Não deixar campos vazios 
+        self.nome = input('Nome: ')
+        if self.nome=="":
+          print("Preencha todos os campos.")  
+        else:
+          break
 
-      self.nome = input('Nome: ')
-      self.email = input('Email: ')
+      while True: #Não deixar campos vazios 
+        self.email = input('Email: ')
+        if self.email=="":
+          print('Preencha todos os campos')
+        else:
+          break
+
       self.senha = getpass.getpass ('Senha: ') #senha oculta
-
+    
+    #Exceção_Telefone
       while True:
         try:
           self.tel=int(input('Telefone: '))
           break
         except ValueError:
           print("inválido")
-
+    
+    #Exceção_CPF
+    
 
       self.cpf=input('cpf:')
       self.endereco = input('Endereço: ') 
