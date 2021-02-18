@@ -9,6 +9,15 @@ import time
 import getpass
 import os
 
+class ExececaoVazio (Exception):
+  pass
+
+def vazio_error(x):
+  if x =="":
+    raise ExececaoVazio()  
+  else:
+    return  
+
 class Pessoa:
   def __init__(self, nome, email, senha, telefone):
     self.nome = nome
@@ -18,35 +27,72 @@ class Pessoa:
 
   def cadastro(self):
     if menu1 == '1':
-      while True: # Não deixar campos vazios 
-        self.nome = input('Nome: ')
-        if self.nome=="":
-          print("Preencha todos os campos.")  
+      #Exceçaõ em nome: campo vazio.
+      while True: 
+        try:
+          self.nome = input('Nome: ')
+          vazio_error(self.nome)
+        except ExececaoVazio:
+          print ("Preencha todos os campos")
         else:
           break
 
-      while True: #Não deixar campos vazios 
-        self.email = input('Email: ')
-        if self.email=="":
-          print('Preencha todos os campos')
-        else:
-          break
-
-      self.senha = getpass.getpass ('Senha: ') #senha oculta
-    
-    #Exceção_Telefone
+#Exceção em email: campo vazio.
       while True:
         try:
-          self.tel=int(input('Telefone: '))
+          self.email = input('Email: ')
+          vazio_error(self.email)
+        except ExececaoVazio:
+          print ("Preencha todos os campos")
+        else:
           break
-        except ValueError:
-          print("inválido")
-    
-    #Exceção_CPF
-    
 
-      self.cpf=input('cpf:')
-      self.endereco = input('Endereço: ') 
+#Exceção em senha: campo vazio.      
+      while True:
+        try:
+          self.senha = getpass.getpass ('Senha: ')
+          #Senha oculta
+          vazio_error(self.senha)
+        except ExececaoVazio:
+          print ("Preencha todos os campos")
+        else:
+          break
+ 
+#Exceção em telefone: apenas números, campo vazio.
+      while True:
+        try:
+          self.tel = input('Telefone: ')
+          vazio_error(self.tel)
+          self.tel = int(self.tel)
+        except ExececaoVazio:
+          print ("Preencha todos os campos")
+        except ValueError:
+          print("Número inválido. ")
+        else:
+          break  
+          
+#Exceçaõ em cpf: apenas números, campo vazio.
+      while True:
+        try:
+          self.cpf= input('cpf: ')
+          vazio_error(self.cpf)
+          self.cpf = int(self.cpf)
+        except ExececaoVazio:
+          print ("Preencha todos os campos")
+        except ValueError:
+          print("CPF foi preenchido incorretamente. Use apenas números.")
+        else:
+          break
+
+#Exceçaõ em endereço: campo vazio.
+      while True:
+        try:
+          self.endereco = input('Endereço: ') 
+          vazio_error(self.endereco)
+        except ExececaoVazio:
+          print ("Preencha todos os campos")
+        else:
+          break   
 
     elif menu1 == '2':
       senhafunc = '9247'  #senha de acesso do sistema 
