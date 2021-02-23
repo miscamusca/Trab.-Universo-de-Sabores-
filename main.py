@@ -27,7 +27,7 @@ class Pessoa:
 
   def cadastro(self):
     if menu1 == '1':
-      #Exceçaõ em nome: campo vazio.
+#Exceçaõ em nome: campo vazio.
       while True: 
         try:
           self.nome = input('Nome: ')
@@ -99,14 +99,49 @@ class Pessoa:
       while True:
         cod = input('Digite o código de funcionários: ')
         if cod == senhafunc:
-          self.nome = input('Nome: ')
-          self.email = input('Email: ')
-          self.senha = input('Senha: ')
-          self.tel = input('Telefone: ')
-          break
+          while True: 
+            try:
+              self.nome = input('Nome: ')
+              vazio_error(self.nome)
+            except ExececaoVazio:
+                print ("Por favor, preencha todos os campos.")
+            else:
+              break
+          
+          while True:
+            try:
+              self.email = input('Email: ')
+              vazio_error(self.email)
+            except ExececaoVazio:
+              print ("Por favor, preencha todos os campos.")
+            else:
+              break
+
+          while True:
+            try:
+              self.senha = getpass.getpass ('Senha: ')#Senha oculta
+              vazio_error(self.senha)
+            except ExececaoVazio:
+              print ("Por favor, preencha todos os campos.")
+            else:
+              break
+
+          while True:
+            try:
+              self.tel = input('Telefone: ')
+              vazio_error(self.tel)
+              self.tel = int(self.tel)
+            except ExececaoVazio:
+              print ("Por favor, preencha todos os campos.")
+            except ValueError:
+              print("Inválido, apenas números neste campo.")
+            else:
+              break   
+          break  
+                    
         else:
           print('Código inválido')
-          continue
+          break
 
   def alterarDados(self):
     while True:
