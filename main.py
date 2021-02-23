@@ -33,7 +33,7 @@ class Pessoa:
           self.nome = input('Nome: ')
           vazio_error(self.nome)
         except ExececaoVazio:
-          print ("Preencha todos os campos")
+          print ("Por favor, preencha todos os campos.")
         else:
           break
 
@@ -43,7 +43,7 @@ class Pessoa:
           self.email = input('Email: ')
           vazio_error(self.email)
         except ExececaoVazio:
-          print ("Preencha todos os campos")
+          print ("Por favor, preencha todos os campos.")
         else:
           break
 
@@ -54,7 +54,7 @@ class Pessoa:
           #Senha oculta
           vazio_error(self.senha)
         except ExececaoVazio:
-          print ("Preencha todos os campos")
+          print ("Por favor, preencha todos os campos.")
         else:
           break
  
@@ -65,9 +65,9 @@ class Pessoa:
           vazio_error(self.tel)
           self.tel = int(self.tel)
         except ExececaoVazio:
-          print ("Preencha todos os campos")
+          print ("Por favor, preencha todos os campos.")
         except ValueError:
-          print("Número inválido. ")
+          print("Inválido, apenas números neste campo.")
         else:
           break  
           
@@ -78,9 +78,9 @@ class Pessoa:
           vazio_error(self.cpf)
           self.cpf = int(self.cpf)
         except ExececaoVazio:
-          print ("Preencha todos os campos")
+          print ("Por favor, preencha todos os campos.")
         except ValueError:
-          print("CPF foi preenchido incorretamente. Use apenas números.")
+          print("Inválido, apenas números neste campo.")
         else:
           break
 
@@ -90,7 +90,7 @@ class Pessoa:
           self.endereco = input('Endereço: ') 
           vazio_error(self.endereco)
         except ExececaoVazio:
-          print ("Preencha todos os campos")
+          print ("Por favor, preencha todos os campos.")
         else:
           break   
 
