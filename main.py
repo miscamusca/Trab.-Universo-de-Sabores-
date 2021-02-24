@@ -218,7 +218,25 @@ class Funcionarios(Pessoa):
 class Cliente(Pessoa):
   def __init__(self, nome, email, senha, telefone, endereco, cpf):
     self.ender= endereco
-    self.cpf= cpf
+
+    while True:
+        try:
+          self.cpf= input('CPF: ')
+          vazio_error(self.cpf)
+          for r in self.cpf:
+            if r.isdigit()==False:
+              raise ValueError
+          if len(self.cpf) != 11:
+            raise ErroDigito 
+        except ExececaoVazio:
+          print ("Por favor, preencha todos os campos.")
+        except ValueError:
+          print("Inválido, apenas números neste campo.")
+        except ErroDigito:
+          print("Inválido. Este campo compõe-se por somente 11 dígitos.")
+        else:
+          break
+
     super().__init__(nome, email, senha, telefone)
 
 # A classe Produto compõe o item Pedido
