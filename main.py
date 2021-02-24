@@ -33,7 +33,7 @@ class Pessoa:
           self.nome = input('Nome: ')
           vazio_error(self.nome)
         except ExececaoVazio:
-          print ("Por favor, preencha todos os campos.")
+          print ("ERRO! Por favor, preencha todos os campos.")
         else:
           break
 
@@ -43,7 +43,7 @@ class Pessoa:
           self.email = input('Email: ')
           vazio_error(self.email)
         except ExececaoVazio:
-          print ("Por favor, preencha todos os campos.")
+          print ("ERRO! Por favor, preencha todos os campos.")
         else:
           break
 
@@ -54,7 +54,7 @@ class Pessoa:
           #Senha oculta
           vazio_error(self.senha)
         except ExececaoVazio:
-          print ("Por favor, preencha todos os campos.")
+          print ("ERRO! Por favor, preencha todos os campos.")
         else:
           break
  
@@ -65,9 +65,9 @@ class Pessoa:
           vazio_error(self.tel)
           self.tel = int(self.tel)
         except ExececaoVazio:
-          print ("Por favor, preencha todos os campos.")
+          print ("ERRO! Por favor, preencha todos os campos.")
         except ValueError:
-          print("Inválido, apenas números neste campo.")
+          print("Inválido! O campo deve conter apenas números.")
         else:
           break  
           
@@ -78,9 +78,9 @@ class Pessoa:
           vazio_error(self.cpf)
           self.cpf = int(self.cpf)
         except ExececaoVazio:
-          print ("Por favor, preencha todos os campos.")
+          print ("ERRO! Por favor, preencha todos os campos.")
         except ValueError:
-          print("Inválido, apenas números neste campo.")
+          print("Inválido! O campo deve conter apenas números.")
         else:
           break
 
@@ -90,7 +90,7 @@ class Pessoa:
           self.endereco = input('Endereço: ') 
           vazio_error(self.endereco)
         except ExececaoVazio:
-          print ("Por favor, preencha todos os campos.")
+          print ("ERRO! Por favor, preencha todos os campos.")
         else:
           break   
 
@@ -104,7 +104,7 @@ class Pessoa:
               self.nome = input('Nome: ')
               vazio_error(self.nome)
             except ExececaoVazio:
-                print ("Por favor, preencha todos os campos.")
+                print ("ERRO! Por favor, preencha todos os campos.")
             else:
               break
           
@@ -113,7 +113,7 @@ class Pessoa:
               self.email = input('Email: ')
               vazio_error(self.email)
             except ExececaoVazio:
-              print ("Por favor, preencha todos os campos.")
+              print ("ERRO! Por favor, preencha todos os campos.")
             else:
               break
 
@@ -122,7 +122,7 @@ class Pessoa:
               self.senha = getpass.getpass ('Senha: ')#Senha oculta
               vazio_error(self.senha)
             except ExececaoVazio:
-              print ("Por favor, preencha todos os campos.")
+              print ("ERRO! Por favor, preencha todos os campos.")
             else:
               break
 
@@ -132,9 +132,9 @@ class Pessoa:
               vazio_error(self.tel)
               self.tel = int(self.tel)
             except ExececaoVazio:
-              print ("Por favor, preencha todos os campos.")
+              print ("ERRO! Por favor, preencha todos os campos.")
             except ValueError:
-              print("Inválido, apenas números neste campo.")
+              print("Inválido! O campo deve conter apenas números.")
             else:
               break   
           break  
@@ -163,7 +163,7 @@ class Pessoa:
               print("Alteração concluída!")
               break
             else: 
-              print('Senha inválida')
+              print('Senha inválida.')
               continue
         if escolherDado == '4':
           self.telefone = input('Digite novo número: ')
@@ -428,6 +428,7 @@ Digite 2 para fazer pedido| """)
         elif menuCliente == '2':
           itempedido.cardapio()#vamos utilizar objetos para manipular
           break
+        
 
     elif menu1 == '2': #MENU FUNCIONÁRIOS
       func.cadastro()
