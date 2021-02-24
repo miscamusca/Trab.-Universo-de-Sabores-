@@ -12,6 +12,8 @@ import os
 class ExececaoVazio (Exception):
   pass
 
+class ErroDigito (Exception):
+  pass
 def vazio_error(x):
   if x =="":
     raise ExececaoVazio()  
@@ -74,13 +76,19 @@ class Pessoa:
 #Exceçaõ em cpf: apenas números, campo vazio.
       while True:
         try:
-          self.cpf= input('cpf: ')
+          self.cpf= input('CPF: ')
           vazio_error(self.cpf)
-          self.cpf = int(self.cpf)
+          for r in self.cpf:
+            if r.isdigit()==False:
+              raise ValueError
+          if len(self.cpf) != 11:
+            raise ErroDigito 
         except ExececaoVazio:
-          print ("ERRO! Por favor, preencha todos os campos.")
+          print ("Por favor, preencha todos os campos.")
         except ValueError:
-          print("Inválido! O campo deve conter apenas números.")
+          print("Inválido, apenas números neste campo.")
+        except ErroDigito:
+          print("Inválido. Este campo compõe-se por somente 11 dígitos.")
         else:
           break
 
