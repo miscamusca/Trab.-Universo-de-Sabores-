@@ -12,8 +12,6 @@ import os
 class ExececaoVazio (Exception):
   pass
 
-class ErroDigito (Exception):
-  pass
 def vazio_error(x):
   if x =="":
     raise ExececaoVazio()  
@@ -35,7 +33,7 @@ class Pessoa:
           self.nome = input('Nome: ')
           vazio_error(self.nome)
         except ExececaoVazio:
-          print ("ERRO! Por favor, preencha todos os campos.")
+          print ("Por favor, preencha todos os campos.")
         else:
           break
 
@@ -45,7 +43,7 @@ class Pessoa:
           self.email = input('Email: ')
           vazio_error(self.email)
         except ExececaoVazio:
-          print ("ERRO! Por favor, preencha todos os campos.")
+          print ("Por favor, preencha todos os campos.")
         else:
           break
 
@@ -56,7 +54,7 @@ class Pessoa:
           #Senha oculta
           vazio_error(self.senha)
         except ExececaoVazio:
-          print ("ERRO! Por favor, preencha todos os campos.")
+          print ("Por favor, preencha todos os campos.")
         else:
           break
  
@@ -67,28 +65,22 @@ class Pessoa:
           vazio_error(self.tel)
           self.tel = int(self.tel)
         except ExececaoVazio:
-          print ("ERRO! Por favor, preencha todos os campos.")
+          print ("Por favor, preencha todos os campos.")
         except ValueError:
-          print("Inválido! O campo deve conter apenas números.")
+          print("Inválido, apenas números neste campo.")
         else:
           break  
           
 #Exceçaõ em cpf: apenas números, campo vazio.
       while True:
         try:
-          self.cpf= input('CPF: ')
+          self.cpf= input('cpf: ')
           vazio_error(self.cpf)
-          for r in self.cpf:
-            if r.isdigit()==False:
-              raise ValueError
-          if len(self.cpf) != 11:
-            raise ErroDigito 
+          self.cpf = int(self.cpf)
         except ExececaoVazio:
           print ("Por favor, preencha todos os campos.")
         except ValueError:
           print("Inválido, apenas números neste campo.")
-        except ErroDigito:
-          print("Inválido. Este campo compõe-se por somente 11 dígitos.")
         else:
           break
 
@@ -98,7 +90,7 @@ class Pessoa:
           self.endereco = input('Endereço: ') 
           vazio_error(self.endereco)
         except ExececaoVazio:
-          print ("ERRO! Por favor, preencha todos os campos.")
+          print ("Por favor, preencha todos os campos.")
         else:
           break   
 
@@ -112,7 +104,7 @@ class Pessoa:
               self.nome = input('Nome: ')
               vazio_error(self.nome)
             except ExececaoVazio:
-                print ("ERRO! Por favor, preencha todos os campos.")
+                print ("Por favor, preencha todos os campos.")
             else:
               break
           
@@ -121,7 +113,7 @@ class Pessoa:
               self.email = input('Email: ')
               vazio_error(self.email)
             except ExececaoVazio:
-              print ("ERRO! Por favor, preencha todos os campos.")
+              print ("Por favor, preencha todos os campos.")
             else:
               break
 
@@ -130,7 +122,7 @@ class Pessoa:
               self.senha = getpass.getpass ('Senha: ')#Senha oculta
               vazio_error(self.senha)
             except ExececaoVazio:
-              print ("ERRO! Por favor, preencha todos os campos.")
+              print ("Por favor, preencha todos os campos.")
             else:
               break
 
@@ -140,9 +132,9 @@ class Pessoa:
               vazio_error(self.tel)
               self.tel = int(self.tel)
             except ExececaoVazio:
-              print ("ERRO! Por favor, preencha todos os campos.")
+              print ("Por favor, preencha todos os campos.")
             except ValueError:
-              print("Inválido! O campo deve conter apenas números.")
+              print("Inválido, apenas números neste campo.")
             else:
               break   
           break  
@@ -171,7 +163,7 @@ class Pessoa:
               print("Alteração concluída!")
               break
             else: 
-              print('Senha inválida.')
+              print('Senha inválida')
               continue
         if escolherDado == '4':
           self.telefone = input('Digite novo número: ')
@@ -436,7 +428,6 @@ Digite 2 para fazer pedido| """)
         elif menuCliente == '2':
           itempedido.cardapio()#vamos utilizar objetos para manipular
           break
-        
 
     elif menu1 == '2': #MENU FUNCIONÁRIOS
       func.cadastro()
